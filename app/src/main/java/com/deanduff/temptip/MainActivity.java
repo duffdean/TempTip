@@ -14,16 +14,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onTouch(View v, MotionEvent event)
+    public boolean onTouchEvent(MotionEvent event)
     {
         TextView xBox = (TextView)findViewById(R.id.textView);
         TextView yBox = (TextView)findViewById(R.id.textView2);
 
-        int x = (int) event.getX();
-        int y = (int) event.getY();
 
-
-        xBox.setText(x);
-        yBox.setText(y);
+        xBox.setText(String.valueOf(event.getX()));
+        yBox.setText(String.valueOf(event.getY()));
+        return super.onTouchEvent(event);
     }
 }
