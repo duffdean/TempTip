@@ -1,5 +1,6 @@
 package Utils;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -101,11 +102,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void openDatabase() throws SQLException
     {
-
-        //Open the database
         String myPath = DB_PATH + DB_NAME;
         database = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
-
     }
 
     @Override
@@ -129,6 +127,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
 
+    }
+
+    public void storeTempValues(double x, double y)    {
+
+        ContentValues values = new ContentValues();
+
+        values.put("x", x);
+        values.put("y", y);
+
+        database.insert("Person", null, values);
     }
 
 }
