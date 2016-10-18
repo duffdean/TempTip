@@ -136,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("x", x);
         values.put("y", y);
 
-        database.insert("Person", null, values);
+        database.insert("tempData", null, values);
     }
 
 }
